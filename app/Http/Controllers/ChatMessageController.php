@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChatMessage;
+use Illuminate\Http\Request;
+use App\Http\Resources\ChatMessageResource;
+use App\Http\Resources\ChatMessageCollection;
 use App\Http\Requests\StoreChatMessageRequest;
 use App\Http\Requests\UpdateChatMessageRequest;
 
@@ -14,14 +17,23 @@ class ChatMessageController extends Controller
     public function index()
     {
         //
+        return new ChatMessageCollection(ChatMessage::all());
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreChatMessageRequest $request)
+    public function store(Request $request)
     {
         //
+        $request->validate([
+            'content' => 'required',
+            // 'image' => 'sometimes|image'
+        ]);
+
+        $message = ChatMessage::create($request->all());
+
+        return new ChatMessageResource($message);
     }
 
     /**

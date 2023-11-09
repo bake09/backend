@@ -24,12 +24,18 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'TestUser1',
             'email' => 'test@test.com',
+            'firstname' => 'Basar',
+            'lastname' => 'Ökke',
+            'birthday' => '06.08.1984',
             'password' => bcrypt('password'),
             'email_verified_at' => NULL,
         ]);
         \App\Models\User::factory()->create([
             'name' => 'TestUser2',
             'email' => 'test2@test.com',
+            'firstname' => 'Kader',
+            'lastname' => 'Ökke',
+            'birthday' => '28.04.1984',
             'password' => bcrypt('password'),
             'email_verified_at' => NULL,
         ]);

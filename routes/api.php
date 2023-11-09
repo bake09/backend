@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Models\ChatMessage;
 use Illuminate\Http\Request;
 use Laravel\Fortify\RoutePath;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChatMessageController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
@@ -38,4 +40,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/users', UserController::class);
     Route::get('/user', [UserController::class, 'getUser']);
     Route::post('/addavatar', [UserController::class, 'addavatar']);
+    Route::apiResource('/chatmessages', ChatMessageController::class);
 });
